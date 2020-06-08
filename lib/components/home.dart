@@ -326,48 +326,67 @@ class _GlobalState extends State<Global> {
                           color: Colors.grey[800]),
                     ),
                     SizedBox(height: 20),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      padding: EdgeInsets.all(20),
-                      height: 150,
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    Expanded(
+                      child: ListView(
+                        // scrollDirection: Axis.horizontal,
+                        // shrinkWrap: true,
                         children: <Widget>[
-                          Text('Total Recovered Cases',
-                              style: TextStyle(color: Colors.grey[50])),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                            padding: EdgeInsets.all(20),
+                            height: 150,
+                            width: double.infinity /2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text('Total Death Cases',
+                                    style: TextStyle(color: Colors.grey[50])),
+                                SizedBox(width: 10),
+                                Text(numtoRead(data['TotalDeaths']),
+                                    style: TextStyle(
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red[100]))
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                // boxShadow: [
+                                //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                                // ],
+                                color: Colors.grey[800]),
+                          ),
                           SizedBox(width: 10),
-                          Text(numtoRead(data['TotalRecovered']),
-                              style: TextStyle(
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green[100]))
+                          Container(
+                            margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
+                            padding: EdgeInsets.all(20),
+                            height: 150,
+                            width: double.infinity /2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text('Total Death Cases',
+                                    style: TextStyle(color: Colors.grey[50])),
+                                SizedBox(width: 10),
+                                Text(numtoRead(data['TotalDeaths']),
+                                    style: TextStyle(
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red[100]))
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                // boxShadow: [
+                                //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                                // ],
+                                color: Colors.grey[800]),
+                          ),
                         ],
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          // boxShadow: [
-                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
-                          // ],
-                          color: Colors.grey[800]),
-                    ),
-                    SizedBox(height: 20),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      // padding: EdgeInsets.all(20),
-                      height: 150,
-                      width: double.infinity,
-                      child: Image.network(image,
-                          height: 150, width: double.infinity),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          // boxShadow: [
-                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
-                          // ],
-                          color: Colors.grey[800]),
-                    ),
-                    SizedBox(height: 20)
+                    )    
                   ],
                 ),
               ),

@@ -115,7 +115,10 @@ class _ChartState extends State<Chart> {
                 child: Container(
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),
-                  color: Colors.grey[800],
+                  decoration: BoxDecoration(
+                    color: Colors.grey[800],
+                    borderRadius: BorderRadius.circular(5),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
