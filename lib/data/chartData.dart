@@ -1,9 +1,9 @@
 class ChartData {
   String country;
-  int cases;
-  DateTime date;
+  int active;
+  int recovered;
+  int deaths;
+  DateTime date; //DaateTime
 
-  ChartData({this.country, this.cases, this.date});
-
-
+  ChartData({this.country, this.active, this.recovered, this.deaths, this.date});
 }

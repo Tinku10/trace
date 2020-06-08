@@ -17,6 +17,7 @@ class _GlobalState extends State<Global> {
   Map globalData = {};
   Map country = {'country': 'Global', 'url': null};
   bool loading = true;
+  String image = 'https://covid19.mathdro.id/api/og';
 
   @override
   void initState() {
@@ -52,6 +53,13 @@ class _GlobalState extends State<Global> {
 
     if (result != null) {
       setState(() {
+        if (result['country'] == 'Global') {
+          image = 'https://covid19.mathdro.id/api/og';
+        } else {
+          image = 'https://covid19.mathdro.id/api/countries/' +
+              result['url'] +
+              '/og';
+        }
         country = result;
       });
       for (Map ele in totalData) {
@@ -101,6 +109,7 @@ class _GlobalState extends State<Global> {
               setState(() {
                 data = globalData;
                 country = {'country': 'Global', 'url': null};
+                image = 'https://covid19.mathdro.id/api/og';
               });
             },
           ),
@@ -114,18 +123,29 @@ class _GlobalState extends State<Global> {
           backgroundColor: Colors.grey[800],
           elevation: 0,
         ),
-        bottomNavigationBar:
-            BottomNavigationBar(backgroundColor: Colors.grey[900], items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.crop_landscape, color: Colors.grey[100], size: 20),
-              title: Text('Cards',
-                  style: TextStyle(color: Colors.grey[100], fontSize: 15)),
-              backgroundColor: Colors.grey[800]),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.grain, color: Colors.grey[100], size: 20),
-              title: Text('Graph',
-                  style: TextStyle(color: Colors.grey[100], fontSize: 15))),
-        ]),
+        bottomNavigationBar: BottomNavigationBar(
+              onTap: (index) {
+                if(index == 1){
+                  Navigator.pushNamed(context, '/graph', arguments: country);
+                }
+              },
+              type: BottomNavigationBarType.fixed,
+              currentIndex: 0,
+              backgroundColor: Colors.grey[900],
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.crop_landscape,
+                      color: Colors.blue[100], size: 25),
+                  title: Text('Cards',
+                      style: TextStyle(color: Colors.blue[100], fontSize: 10)),
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.grain, color: Colors.grey[100], size: 25),
+                    title: Text(
+                      'Graph',
+                      style: TextStyle(color: Colors.grey[100], fontSize: 10),
+                    )),
+              ]),
         body: Container(
           color: Colors.grey[900],
           child: Column(
@@ -325,6 +345,21 @@ class _GlobalState extends State<Global> {
                                   color: Colors.green[100]))
                         ],
                       ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          // boxShadow: [
+                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                          // ],
+                          color: Colors.grey[800]),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      // padding: EdgeInsets.all(20),
+                      height: 150,
+                      width: double.infinity,
+                      child: Image.network(image,
+                          height: 150, width: double.infinity),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           // boxShadow: [
