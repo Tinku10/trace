@@ -17,7 +17,7 @@ class _GlobalState extends State<Global> {
   Map globalData = {};
   Map country = {'country': 'Global', 'url': null};
   bool loading = true;
-  String image = 'https://covid19.mathdro.id/api/og';
+  // String image = 'https://covid19.mathdro.id/api/og';
 
   @override
   void initState() {
@@ -53,13 +53,13 @@ class _GlobalState extends State<Global> {
 
     if (result != null) {
       setState(() {
-        if (result['country'] == 'Global') {
-          image = 'https://covid19.mathdro.id/api/og';
-        } else {
-          image = 'https://covid19.mathdro.id/api/countries/' +
-              result['url'] +
-              '/og';
-        }
+        // if (result['country'] == 'Global') {
+        //   image = 'https://covid19.mathdro.id/api/og';
+        // } else {
+        //   image = 'https://covid19.mathdro.id/api/countries/' +
+        //       result['url'] +
+        //       '/og';
+        // }
         country = result;
       });
       for (Map ele in totalData) {
@@ -91,6 +91,13 @@ class _GlobalState extends State<Global> {
     return number.toString();
   }
 
+  String numtoPercent(dynamic number) {
+    
+    return double.parse((number).toStringAsFixed(1)).toString();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     if (loading) {
@@ -109,7 +116,7 @@ class _GlobalState extends State<Global> {
               setState(() {
                 data = globalData;
                 country = {'country': 'Global', 'url': null};
-                image = 'https://covid19.mathdro.id/api/og';
+                // image = 'https://covid19.mathdro.id/api/og';
               });
             },
           ),
@@ -326,67 +333,87 @@ class _GlobalState extends State<Global> {
                           color: Colors.grey[800]),
                     ),
                     SizedBox(height: 20),
-                    Expanded(
-                      child: ListView(
-                        // scrollDirection: Axis.horizontal,
-                        // shrinkWrap: true,
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: EdgeInsets.all(20),
+                      height: 150,
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
-                            padding: EdgeInsets.all(20),
-                            height: 150,
-                            width: double.infinity /2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Text('Total Death Cases',
-                                    style: TextStyle(color: Colors.grey[50])),
-                                SizedBox(width: 10),
-                                Text(numtoRead(data['TotalDeaths']),
-                                    style: TextStyle(
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.red[100]))
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                // boxShadow: [
-                                //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
-                                // ],
-                                color: Colors.grey[800]),
-                          ),
+                          Text('Total Recovered Cases',
+                              style: TextStyle(color: Colors.grey[50])),
                           SizedBox(width: 10),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(10, 0, 20, 0),
-                            padding: EdgeInsets.all(20),
-                            height: 150,
-                            width: double.infinity /2,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Text('Total Death Cases',
-                                    style: TextStyle(color: Colors.grey[50])),
-                                SizedBox(width: 10),
-                                Text(numtoRead(data['TotalDeaths']),
-                                    style: TextStyle(
-                                        fontSize: 50,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.red[100]))
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                // boxShadow: [
-                                //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
-                                // ],
-                                color: Colors.grey[800]),
-                          ),
+                          Text(numtoRead(data['TotalRecovered']),
+                              style: TextStyle(
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green[100]))
                         ],
                       ),
-                    )    
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          // boxShadow: [
+                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                          // ],
+                          color: Colors.grey[800]),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: EdgeInsets.all(20),
+                      height: 150,
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text('Mortality Rate',
+                              style: TextStyle(color: Colors.grey[900])),
+                          SizedBox(width: 10),
+                          Text(numtoPercent(data['TotalDeaths']*100/ data['TotalConfirmed']) + '%',
+                              style: TextStyle(
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey[900]))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          // boxShadow: [
+                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                          // ],
+                          color: Colors.red[100]),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      padding: EdgeInsets.all(20),
+                      height: 150,
+                      width: double.infinity /2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text('Survival Rate',
+                              style: TextStyle(color: Colors.grey[900])),
+                          SizedBox(width: 10),
+                          Text(numtoPercent(data['TotalRecovered']*100 / data['TotalConfirmed']) + '%',
+                              style: TextStyle(
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey[900]))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          // boxShadow: [
+                          //   BoxShadow(color: Colors.grey[200], blurRadius: 10)
+                          // ],
+                          color: Colors.green[100]),
+                    ),
+                    // SizedBox(height: 20),
                   ],
                 ),
               ),
