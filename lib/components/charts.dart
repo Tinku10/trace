@@ -32,14 +32,14 @@ class _ChartState extends State<Chart> {
     } else {
       res = await get(
           'https://api.covid19api.com/total/dayone/country/' + country['url']);
+      data = jsonDecode(res.body);
     }
     // print(res.body);
     // print(country['country']);
     // print('api accessed');
-    if(country['country'] != 'Global'){
-      data = jsonDecode(res.body);
+    // if(country['country'] != 'Global'){
 
-    }
+    // }
     // print(data);
     if (mounted) {
       setState(() {
