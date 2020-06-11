@@ -13,5 +13,7 @@ void main() {
     '/': (context) => Global(),
     '/search': (context) => Search(),
     '/graph': (context) => Chart()
-  }));
+  }, 
+  debugShowCheckedModeBanner: false,
+  ));
 }

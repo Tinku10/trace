@@ -112,15 +112,15 @@ class _ChartState extends State<Chart> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.crop_landscape,
-                      color: Colors.grey[100], size: 25),
+                      color: Colors.grey[400], size: 25),
                   title: Text('Cards',
-                      style: TextStyle(color: Colors.grey[100], fontSize: 10)),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 10)),
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.grain, color: Colors.blue[100], size: 25),
+                    icon: Icon(Icons.grain, color: Colors.grey[100], size: 25),
                     title: Text(
                       'Graph',
-                      style: TextStyle(color: Colors.blue[100], fontSize: 10),
+                      style: TextStyle(color: Colors.grey[100], fontSize: 10),
                     )),
               ]),
           body: Container(
@@ -175,17 +175,17 @@ class _ChartState extends State<Chart> {
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.crop_landscape,
-                        color: Colors.grey[100], size: 25),
+                        color: Colors.grey[400], size: 25),
                     title: Text('Cards',
                         style:
-                            TextStyle(color: Colors.grey[100], fontSize: 10)),
+                            TextStyle(color: Colors.grey[400], fontSize: 10)),
                   ),
                   BottomNavigationBarItem(
                       icon:
-                          Icon(Icons.grain, color: Colors.blue[100], size: 25),
+                          Icon(Icons.grain, color: Colors.grey[100], size: 25),
                       title: Text(
                         'Graph',
-                        style: TextStyle(color: Colors.blue[100], fontSize: 10),
+                        style: TextStyle(color: Colors.grey[100], fontSize: 10),
                       )),
                 ]),
             body: Container(
