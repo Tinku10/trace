@@ -160,13 +160,19 @@ class _GlobalState extends State<Global> {
           onPressed: () {
             showAboutDialog(
                 context: context,
-                applicationName: 'Trace',
-                applicationIcon: Image.asset('assets/icon/icon.png'),
+                applicationName: 'Trace',//Image.asset('assets/icon/icon.png', height: 1, width: 1),
+                applicationVersion: 'v1.0',
+                applicationIcon: Image(
+                  height: 35,
+                  width: 35,
+                  fit: BoxFit.contain,
+                  image: AssetImage('assets/icon/icon.png')
+                ),
                 applicationLegalese: 'An Open Source Project',
                 children: [
                   SizedBox(height: 10),
                   Text(
-                      'Trace relies on publicly available COVID-19 data. This app consumes an API designed by Kyle Redelinghuys.',
+                      'Trace provides a comprehensive COVID-19 statistics. This app consumes an API designed by Kyle Redelinghuys. The logo is designed by fjstudio from Flaticon.',
                       style: TextStyle(color: Colors.grey[400], fontSize: 12)),
                   SizedBox(height: 10),
                   Linkify(
@@ -180,8 +186,8 @@ class _GlobalState extends State<Global> {
                     textAlign: TextAlign.center,
                     text:
                         "Contribute on Github https://www.github.com/Tinku10/trace",
-                    style: TextStyle(color: Colors.grey[800]),
-                    linkStyle: TextStyle(color: Colors.blue),
+                    style: TextStyle(color: Colors.grey[600]),
+                    linkStyle: TextStyle(color: Colors.blue[200]),
                   )
                 ]);
           },

@@ -62,6 +62,7 @@ class _SearchState extends State<Search> {
         ),
         body: Container(
           //color: Colors.grey[900],
+          color: Colors.grey[50],
           child: ListView.builder(
             itemCount: filter(typed).length,
             itemBuilder: (context, index) => OutlineButton(
