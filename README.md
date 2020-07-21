@@ -1,16 +1,7 @@
-# covid_19_tracker
+# Trace
 
-A new Flutter project.
+#### Trace is a COVID-19 tracking app which shows current stats globally and per country. 
 
-## Getting Started
+##### Due to the restrictions in the Google Platstore for COVID-19 apps, I was not able to publish it there. But anyhow, you can download it from the release section in this repository. It is using an API covid19api.com for the data.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
